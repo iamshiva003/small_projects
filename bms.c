@@ -10,7 +10,7 @@ bms_proc_t bms_init()
 
 bms_proc_t bms_exec()
 {
-    static run_flag = 1;
+    static int run_flag = 1;
 
     bms_proc_t ret_status = bms_proc_success;
     void (*menu[])(customer_t *) = {deposit_menu, create_menu, withdraw_menu, account_deatils_menu, save_and_exit_menu};

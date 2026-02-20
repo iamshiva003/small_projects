@@ -9,14 +9,24 @@ main_menu_opt_t main_menu()
 {
     uint32_t choice;
     main_menu_opt_t ret_status = INVALID_MENU;
+    
+    system("clear");
 
-    printf("\n1.Create account\
-            \n2.Deposit amount\
-            \n3.Withdraw amount\
-            \n4.Account Details\
-            \n99.save and exit\n");
+    printf("+======================================+\n");
+    printf("+               B - M - S              +\n");
+    printf("+======================================+\n");
+    printf("|       1 : Create account             |\n");
+    printf("+--------------------------------------+\n");
+    printf("|       2 : Deposit amount             |\n");
+    printf("+--------------------------------------+\n");
+    printf("|       3 : Withdraw amount            |\n");
+    printf("+--------------------------------------+\n");
+    printf("|       4 : Account Details            |\n");
+    printf("+--------------------------------------+\n");
+    printf("|      99 : Save and exit              |\n");
+    printf("+======================================+\n\n");
 
-    printf ("Enter your choice : ");
+    printf (">>> ");
         
 
     scanf ("%u",&choice);

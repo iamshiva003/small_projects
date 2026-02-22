@@ -8,9 +8,9 @@
 main_menu_opt_t main_menu()
 {
     uint32_t choice;
-    main_menu_opt_t ret_status = INVALID_MENU;
+    main_menu_opt_t ret_status = INVALID;
     
-    system("clear");
+    // system("clear");
 
     printf("+======================================+\n");
     printf("+               B - M - S              +\n");
@@ -34,23 +34,23 @@ main_menu_opt_t main_menu()
     switch (choice)
     {
     case 1: 
-        ret_status = CREATE_MENU;
+        ret_status = CREATE;
         break;
     case 2: 
-        ret_status = DEPOSIT_MENU;
+        ret_status = DEPOSIT;
         break;
     case 3: 
-        ret_status = WITHDRAW_MENU;
+        ret_status = WITHDRAW;
         break;
     case 4: 
-        ret_status = ACCOUNT_DETAILS_MENU;
+        ret_status = ACCOUNT_DETAILS;
         break;
     case 99:
-        ret_status = SAVE_AD_EXIT_MENU;
+        ret_status = SAVE_AND_EXIT;
         break;
     default : 
     }
-    system("clear");
+    // system("clear");
     return ret_status;
 }
 
@@ -112,6 +112,9 @@ void account_deatils_menu(customer_t *customer_data)
     printf("+---------------------------------------+\n");
     printf("|             ACCOUNT DETAILS           |\n");
     printf("+---------------------------------------+\n");
+
+    printf ("Enter Aadhar number : ");
+    scanf ("%ld",&(customer_data->aadhar));
 }
 
 void save_and_exit_menu(customer_t *customer_data)

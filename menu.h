@@ -4,12 +4,12 @@
 
 typedef enum 
 {
-    CREATE_MENU = 0x00,
-    DEPOSIT_MENU = 0x01,
-    WITHDRAW_MENU = 0x02,
-    ACCOUNT_DETAILS_MENU = 0x03,
-    SAVE_AD_EXIT_MENU = 0x04,
-    INVALID_MENU = 0xFF
+    CREATE = 0x00,
+    DEPOSIT = 0x01,
+    WITHDRAW = 0x02,
+    ACCOUNT_DETAILS = 0x03,
+    SAVE_AND_EXIT = 0x04,
+    INVALID = 0xFF
 } main_menu_opt_t;
 
 

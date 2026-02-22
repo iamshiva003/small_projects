@@ -3,11 +3,10 @@
 
 int main()
 {
-    bms_proc_t status;
 
-    if(bms_init())
+    if(bms_init() != bms_proc_failed)
     {
-        status = bms_exec();
+        bms_exec();
     }
 
 }

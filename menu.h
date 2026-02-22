@@ -23,6 +23,6 @@ void withdraw_menu(customer_t *customer_data);  // function definition to withdr
 
 void account_deatils_menu(customer_t *customer_data);
 
-void save_and_exit_menu(customer_t *customer_data);
+void save_and_exit_menu();
 
 #endif

@@ -24,8 +24,8 @@ void create_account(customer_t *customer_data)
             strncpy(account_entry.entry[account_entry.count].first_name, customer_data->first_name, CHAR_FIELD_LENGTH);
             strncpy(account_entry.entry[account_entry.count].last_name, customer_data->last_name, CHAR_FIELD_LENGTH);
             strncpy(account_entry.entry[account_entry.count].father_name, customer_data->father_name, CHAR_FIELD_LENGTH);
-            account_entry.entry[account_entry.count].age = customer_data->aadhar;
-            account_entry.entry[account_entry.count].cbalance = customer_data->aadhar;
+            account_entry.entry[account_entry.count].age = customer_data->age;
+            account_entry.entry[account_entry.count].cbalance = customer_data->cbalance;
             account_entry.entry[account_entry.count].aadhar = customer_data->aadhar;
             strncpy(account_entry.entry[account_entry.count].DOB, customer_data->DOB, 11);
             strncpy(account_entry.entry[account_entry.count].place, customer_data->place, CHAR_FIELD_LENGTH);

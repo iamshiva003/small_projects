@@ -75,7 +75,7 @@ void create_menu(customer_t *customer_data) // function definition to create acc
     printf ("\nEnter your first name : ");
     scanf ("%s",customer_data->first_name);
 
-    printf ("\nEnter your last name : ");
+    printf ("Enter your last name : ");
     scanf ("%s",customer_data->last_name);
 
     printf ("Father name     : ");
@@ -117,7 +117,7 @@ void account_deatils_menu(customer_t *customer_data)
     scanf ("%ld",&(customer_data->aadhar));
 }
 
-void save_and_exit_menu(customer_t *customer_data)
+void save_and_exit_menu()
 {
     printf("+---------------------------------------+\n");
     printf("|                SAVING...              |\n");

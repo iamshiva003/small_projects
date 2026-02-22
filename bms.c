@@ -25,12 +25,11 @@ bms_proc_t bms_exec()
     bms_proc_t ret_status = bms_proc_success;
 
     // ORDER MATTERS ;-)
-    void (*operation_func[5][2])(customer_t *) = {
+    void (*operation_func[4][2])(customer_t *) = {
         {create_menu, create_account},
         {deposit_menu, deposit_amount},
         {withdraw_menu, withdraw_amount},
-        {account_deatils_menu, account_details},
-        {save_and_exit_menu, NULL}};
+        {account_deatils_menu, account_details}};
 
     main_menu_opt_t main_menu_option;
     customer_t customer_data_holder;
@@ -40,6 +39,7 @@ bms_proc_t bms_exec()
         if((main_menu_option = main_menu()) == SAVE_AND_EXIT)
         {
             run_flag = 0;
+            save_and_exit_menu();
             bms_exit();
         }
         else

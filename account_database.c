@@ -15,7 +15,6 @@ db_operation_status load_databse()
         if((db_file_ptr = fopen(DB_NAME, "wb")) == NULL)
         {
             ret_status = DB_OPERATION_FAILED;
-            printf("E1\n");
         }
         else
         {
@@ -24,7 +23,6 @@ db_operation_status load_databse()
             if(fwrite(&db_header, sizeof(db_header), 1, db_file_ptr) != 1)
             {
                 ret_status = DB_OPERATION_FAILED;
-                printf("E2\n");
             }
         }
     }
@@ -33,12 +31,10 @@ db_operation_status load_databse()
         if(fread(&db_header, sizeof(db_header), 1, db_file_ptr) != 1)
         {
             ret_status = DB_OPERATION_FAILED;
-            printf("E3\n");
         }
         else if (db_header.db_signature != DB_SIGNATURE)
         {
             ret_status = DB_OPERATION_FAILED;
-            printf("E4\n");
         }
     }
 
@@ -46,22 +42,17 @@ db_operation_status load_databse()
     if((ret_status & DB_FAIL_MASK) != DB_OPERATION_FAILED)
     {
         account_entry.count = db_header.account_count;
-        printf("HEAD C : %d\n", db_header.account_count);
-        printf("HEAD S : %X\n", db_header.db_signature);
 
         if((account_entry.entry = (customer_t *)calloc(MAX_ALLOWED_ACCOUNT, sizeof(customer_t))) == NULL)
         {
             ret_status = DB_OPERATION_FAILED;
-            printf("E5\n");
         }
         else
         {
             size_t temp = fread(temp_load, sizeof(db_customer_t), account_entry.count, db_file_ptr);
             if( temp != account_entry.count)
             {
-                printf(">>>> %d\n", temp);
                 ret_status = DB_OPERATION_FAILED;
-                printf("E6\n");
             }
             else
             {
@@ -87,26 +78,21 @@ db_operation_status load_databse()
 
 db_operation_status save_databse()
 {
-    printf("SDB!!!\n");
-
     db_operation_status ret_status = DB_OPERATION_SUCCESS;
     db_customer_t temp_load[MAX_ALLOWED_ACCOUNT];
 
     if((db_file_ptr = fopen(DB_NAME, "wb")) == NULL)
     {
         ret_status = DB_OPERATION_FAILED;
-        printf("SDB: E1\n");
     }
     else
     {
         db_header.account_count = account_entry.count;
-        printf("%d %d\n",db_header.account_count, account_entry.count);
 
         if(fwrite(&db_header, sizeof(db_header), 1, db_file_ptr) == 1)
         {
             for(uint32_t i = 0; i < account_entry.count; i++)
             {
-                printf("PUTTING DATA %d\n", i);
                 strncpy(temp_load[i].first_name, account_entry.entry[i].first_name, CHAR_FIELD_LENGTH);
                 strncpy(temp_load[i].last_name, account_entry.entry[i].last_name, CHAR_FIELD_LENGTH);
                 strncpy(temp_load[i].father_name, account_entry.entry[i].father_name, CHAR_FIELD_LENGTH);
@@ -115,20 +101,15 @@ db_operation_status save_databse()
                 temp_load[i].aadhar = account_entry.entry[i].aadhar;
                 strncpy(temp_load[i].DOB, account_entry.entry[i].DOB, 11);
                 strncpy(temp_load[i].place, account_entry.entry[i].place, CHAR_FIELD_LENGTH);
-                printf("PUTTING DATA %d END\n", i);
             }
-
-            printf("account_entry.count >> %d\n", account_entry.count);
             if(fwrite(temp_load, sizeof(db_customer_t), account_entry.count, db_file_ptr) != account_entry.count)
             {
                 ret_status = DB_OPERATION_FAILED;
-                printf("SDB: E2\n");
             }
         }
         else
         {
             ret_status = DB_OPERATION_FAILED;
-            printf("SDB: E3\n");
         }
     }
 

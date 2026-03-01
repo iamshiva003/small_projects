@@ -1,0 +1,5 @@
+# Ignore DB
+BMS.bdb
+
+# Ignore .out
+a.out

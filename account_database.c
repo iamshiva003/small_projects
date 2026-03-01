@@ -112,6 +112,6 @@ db_operation_status save_databse()
             ret_status = DB_OPERATION_FAILED;
         }
     }
-
+    free(account_entry.entry);
     fclose(db_file_ptr);
 }
